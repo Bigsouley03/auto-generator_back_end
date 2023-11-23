@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/certificates', [CertificateController::class, 'index']);
+Route::post('/storeCertificate', [CertificateController::class, 'store']);
+Route::put('/certificates/{id}', [CertificateController::class, 'update']);
+Route::delete('/certificates/{id}', [CertificateController::class, 'destroy']);
